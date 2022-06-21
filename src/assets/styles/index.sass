@@ -102,13 +102,85 @@ li
       &-logo
         margin: 0 1rem
   &-imagesProduct
-    height: 18.8rem
-    width: 100%
-    background-image: url("../images/image-product-1.jpg")
-    background-size: cover
-    background-repeat: no-repeat
-    background-position: bottom -1cm center
-    
+    &-carrousel
+      display: block
+      height: 18.8rem
+      width: 100%
+      @media screen and (min-width: 768px)
+        margin-top: 20%
+        height: 25rem
+      @media screen and (min-width: 1023px)
+        display: none
+      img
+        width: 100%
+        margin-top: -1rem
+      .swiper-button-next, .swiper-button-prev
+        height: 40px
+        width: 40px
+        color: $black
+        background-color: $white
+        border-radius: 2rem
+        &:after
+          content: ""
+          background-size: contain
+          background-repeat: no-repeat
+          height: 20px
+          width: 100%
+      .swiper-button-prev:after
+        background-image: url("../images/icon-previous.svg")
+        background-position: 11px center
+      .swiper-button-next:after
+        background-image: url("../images/icon-next.svg")
+        background-position: 14px center
+    &-photos
+      height: 100%
+      max-width: 80%
+      margin: 2rem 1.5rem auto auto
+      @media screen and (max-width: 1024px)
+        display: none
+      @media screen and (min-width: 1024px)
+        display: block
+        
+      .show
+        &-product
+          height: 23rem
+          border-radius: 15px
+          overflow: hidden
+          img
+            width: 100%
+            min-height: 23rem
+        &-products
+          width: 100%
+          margin: 2rem 0
+          display: flex
+          justify-content: space-between
+          align-items: center
+          &-select
+            height: 5rem
+            width: 5rem
+            cursor: pointer
+            position: relative
+            span
+              top: -1px
+              bottom: 0
+              border-radius: 15px
+              left: -2px
+              right: 0
+              border: 2px solid transparent
+              // background: $orange
+              overflow: hidden
+              position: absolute
+            img
+              height: 5rem
+              width: 5rem
+              background-color: $white
+              transition: .3s ease-out
+          .active, &-select:hover
+            span
+              border-color: $orange
+              img
+                opacity: .4
+
   &-information
     margin: 1rem 1.5rem
     @media screen and (min-width: 760px)
@@ -210,6 +282,8 @@ li
           width: 14px
           @media screen and (min-width: 1024px)
             width: 11px
+      &-minus
+        padding-bottom: 1.5px
       &-add
         background-color: $orange
         color: $white

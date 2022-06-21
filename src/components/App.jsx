@@ -5,6 +5,8 @@ import cart from "../assets/images/icon-cart.svg"
 import minus from "../assets/images/icon-minus.svg"
 import plus from "../assets/images/icon-plus.svg"
 import Categories from "./categories"
+import Carrusel from "./carrusel"
+import Photos from "./photos"
 
 function App() {
   return (
@@ -37,7 +39,8 @@ function App() {
       </header>
       <main>
         <div className="container-imagesProduct">
-          <div className="carrusel-images"></div>
+          <Carrusel class="container-imagesProduct-carrousel" />
+          <Photos />
         </div>
         <div className="container-information">
           <h5>Sneaker Company</h5>
