@@ -50,7 +50,7 @@ function Photos(params) {
             <ul className="show-products">
               {
                 arrayThumbnail.map( (thumb, i) => 
-                    <li className={`show-products-select ${isActive == i ? "active" : ""}`} key={i} data-id={i} onClick={clickShow}>
+                    <li className={`show-products-select ${isActive === i ? "active" : ""}`} key={i} data-id={i} onClick={clickShow}>
                         <span><img src={thumb} alt={"thumbnail"+i+1} /></span>
                     </li> )
               }
