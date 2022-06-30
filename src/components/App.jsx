@@ -5,6 +5,8 @@ import user from "../assets/images/image-avatar.png"
 import cart from "../assets/images/icon-cart.svg"
 import minus from "../assets/images/icon-minus.svg"
 import plus from "../assets/images/icon-plus.svg"
+import deleted from "../assets/images/icon-delete.svg"
+import thumbnail from "../assets/images/image-product-1-thumbnail.jpg"
 import Categories from "./categories"
 import Carrusel from "./carrusel"
 import Photos from "./photos"
@@ -13,7 +15,10 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quantity: 0
+      quantity: 0,
+      items: 0,
+      cart: [],
+      isActiveCart: false,
     }
   }
 
@@ -44,8 +49,36 @@ class App extends React.Component {
               <Categories class="menu-categories"/>
             </div>
             <div className="menu-right">
-              <div className="wp-cart">
-                <img src={cart} alt="" />
+              <div className="wp-cart" >
+                <img src={cart} alt="" onClick={() => this.setState({isActiveCart: !this.state.isActiveCart})}/>
+                <div className="cart" style={{ visibility: this.state.isActiveCart ? 'visible': 'hidden' }}>
+                  <header className="cart-header"><h4>Cart</h4></header>
+                  <div className="cart-container">
+                    { 
+                      this.state.items === 0 ? <div className="center">
+                          <span className="cart-container-empty">Your cart is empty.</span>
+                        </div>
+                      :
+                      <div className="cart-container-products">
+                        {this.state.cart.map( (index, item) => 
+                          <div className="cart-container-products-item" key={index}>
+                            <div className="thumbnail">
+                              <img className="thumbnail-img" src={thumbnail} alt="product" />
+                            </div>
+                            <div className="info">
+                              <div className="info-name">Fall Limited Edition Sneakers</div>
+                              <div className="info-details"><span>$125.00 x {this.state.quantity}</span> 
+                                <span className="info-details-total">${125 * this.state.quantity}</span>
+                              </div>
+                            </div>
+                            <button className="button-delete"><img src={deleted} alt="delete item" /></button>
+                          </div>
+                        )}
+                        <button className="button-checkout">Checkout</button>
+                      </div>
+                    }
+                  </div>
+                </div>
               </div>
               <div className="wp-user">
                 <img src={user} alt="avatar" />
