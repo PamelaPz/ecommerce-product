@@ -16,6 +16,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       quantity: 0,
+      totalQuantity: 0,
       items: 0,
       cart: [],
       isActiveCart: false,
@@ -50,6 +51,9 @@ class App extends React.Component {
             </div>
             <div className="menu-right">
               <div className="wp-cart" >
+                <div className="top-quantity" style={{ visibility: this.state.totalQuantity <= 0 ? 'hidden' : 'visible' }}>
+                  {this.state.totalQuantity}
+                </div>
                 <img src={cart} alt="" onClick={() => this.setState({isActiveCart: !this.state.isActiveCart})}/>
                 <div className="cart" style={{ visibility: this.state.isActiveCart ? 'visible': 'hidden' }}>
                   <header className="cart-header"><h4>Cart</h4></header>
